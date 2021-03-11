@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/aluno" text="Voltar"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Desafio Luiz Labs - Edição de aluno
+      Desafio Luiza Labs - Edição de aluno
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,9 +16,121 @@
     </ion-toolbar>
   </ion-header>
 
-
   <div id="container">
     <strong>Cadastro de alunos - Edição</strong>
+
+    <!-- área de mensagens-->
+    <p style="width: 50%; margin-left: auto; margin-right: auto; text-align: center;">
+      <app-alert></app-alert>
+    </p>
+
+    <ion-list>
+      <form #cadastroForm="ngForm">
+        <ion-item>
+          <ion-label position="floating" for="nome">Nome</ion-label>
+          <ion-input type="text" id="nome" name="nome" minlength="5" maxlength="150" [(ngModel)]="aluno.nome" required
+            #nome="ngModel">
+          </ion-input>
+
+          <!-- Validações nome -->
+          <div *ngIf="nome.invalid && (nome.dirty || nome.touched)" class="alert alert-danger">
+            <div *ngIf="nome.errors.required">
+              Nome é obrigatório.
+            </div>
+            <div *ngIf="nome.errors.minlength">
+              Nome deve ter ao menos 5 caracteres.
+            </div>
+          </div>
+
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating" for="cpf">CPF</ion-label>
+          <ion-input type="tel" id="cpf" name="cpf" minlength="11" maxlength="14" [(ngModel)]="aluno.cpf" required
+            #cpf="ngModel">
+          </ion-input>
+
+          <!-- Validações CPF -->
+          <div *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)" class="alert alert-danger">
+            <div *ngIf="cpf.errors.required">
+              CPF é obrigatório.
+            </div>
+            <div *ngIf="cpf.errors.minlength">
+              CPF deve ter ao menos 11 caracteres.
+            </div>
+          </div>
+
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating" for="telefone">Telefone</ion-label>
+          <ion-input type="tel" id="telefone" name="telefone" minlength="12" maxlength="12" [(ngModel)]="aluno.telefone"
+            required #telefone="ngModel">
+          </ion-input>
+
+          <!-- Validações telefone -->
+          <div *ngIf="telefone.invalid && (telefone.dirty || telefone.touched)" class="alert alert-danger">
+            <div *ngIf="telefone.errors.required">
+              Telefone é obrigatório.
+            </div>
+            <div *ngIf="telefone.errors.minlength">
+              Telefone deve ter ao menos 11 caracteres.
+            </div>
+          </div>
+
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating" for="celular">Celular</ion-label>
+          <ion-input type="tel" id="celular" name="celular" minlength="11" maxlength="11" [(ngModel)]="aluno.celular"
+            required #celular="ngModel">
+          </ion-input>
+
+          <!-- Validações celular -->
+          <div *ngIf="celular.invalid && (celular.dirty || celular.touched)" class="alert alert-danger">
+            <div *ngIf="celular.errors.required">
+              Celular é obrigatório.
+            </div>
+            <div *ngIf="celular.errors.minlength">
+              Celular deve ter ao menos 11 caracteres.
+            </div>
+          </div>
+
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input type="text" id="email" name="email" maxlength="150" [(ngModel)]="aluno.email"
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required #email="ngModel">
+          </ion-input>
+
+          <!-- Validações celular -->
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+
+            <div *ngIf="email.errors.required">
+              E-mail é obrigatório.
+            </div>
+
+            <div *ngIf="email.errors.maxlength">
+              E-mail deve ter ao menos 150 caracteres.
+            </div>
+
+            <div *ngIf="email.errors.pattern">
+              E-mail deve ser válido.
+            </div>
+
+          </div>
+        </ion-item>
+
+      </form>
+    </ion-list>
+
+    <ion-button expand="block" color="success" (click)="salvar(aluno)" [disabled]="cadastroForm.invalid || clicou">
+      <ion-spinner name="dots" *ngIf="clicou"></ion-spinner>
+      <span *ngIf="!clicou">Salvar</span>
+    </ion-button>
+
+
   </div>
 
 </ion-content>

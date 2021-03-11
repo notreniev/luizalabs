@@ -8,13 +8,16 @@ import { AlunoEditPageRoutingModule } from './aluno-edit-routing.module';
 
 import { AlunoEditPage } from './aluno-edit.page';
 
+import { AlertComponentModule } from '../shared/components/alert/alert.component.module'
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    AlertComponentModule,
     AlunoEditPageRoutingModule
   ],
   declarations: [AlunoEditPage]
 })
-export class AlunoEditPageModule {}
+export class AlunoEditPageModule { }

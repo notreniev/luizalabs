@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertService } from '../shared/providers/alert.service';
 
 @Component({
   selector: 'app-aluno-edit',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlunoEditPage implements OnInit {
 
-  constructor() { }
+  clicou = false;
+  aluno: any = {};
+
+  constructor(private alertService: AlertService) { }
+
+  salvar(aluno) {
+    console.log('aluno', aluno)
+    this.alertService.success('Aluno cadastrado com sucesso')
+  }
 
   ngOnInit() {
   }
