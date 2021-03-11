@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'aluno',
+    loadChildren: () => import('./aluno/aluno.module').then( m => m.AlunoPageModule)
+  },
+  {
+    path: 'aluno-edit',
+    loadChildren: () => import('./aluno-edit/aluno-edit.module').then( m => m.AlunoEditPageModule)
+  },
 ];
 
 @NgModule({
