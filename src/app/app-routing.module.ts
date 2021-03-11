@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
     path: '',
@@ -13,11 +13,15 @@ const routes: Routes = [
   },
   {
     path: 'aluno',
-    loadChildren: () => import('./aluno/aluno.module').then( m => m.AlunoPageModule)
+    loadChildren: () => import('./aluno/aluno.module').then(m => m.AlunoPageModule)
   },
   {
     path: 'aluno-edit',
-    loadChildren: () => import('./aluno-edit/aluno-edit.module').then( m => m.AlunoEditPageModule)
+    loadChildren: () => import('./aluno-edit/aluno-edit.module').then(m => m.AlunoEditPageModule)
+  },
+  {
+    path: 'aluno-edit/:id',
+    loadChildren: () => import('./aluno-edit/aluno-edit.module').then(m => m.AlunoEditPageModule)
   },
 ];
 
