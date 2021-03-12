@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, take } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+
+  public data$ = new BehaviorSubject<any[]>([]);
 
   constructor(private http: HttpClient) { }
 
@@ -51,8 +54,8 @@ export class DataService {
    * @param id 
    * @returns 
    */
-  delete(endpoint: string, id: number) {
-    return this.http.delete<any>(`${environment.apiUrl}/${endpoint}/${id}`);
+  delete(endpoint: string) {
+    return this.http.delete<any>(`${environment.apiUrl}/${endpoint}`);
   }
 
 

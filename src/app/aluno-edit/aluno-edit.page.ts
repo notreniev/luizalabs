@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../shared/providers/alert.service';
 import { DataService } from '../shared/providers/data.service';
 
@@ -10,18 +10,21 @@ import { DataService } from '../shared/providers/data.service';
 })
 export class AlunoEditPage implements OnInit {
 
-  clicou = false;
+  clicouSalvar = false;
+  clicouRemover = false;
+  operacao = "Edição";
   aluno: any = {};
 
   constructor(
     private alertService: AlertService,
     private dataProvider: DataService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
   }
 
   salvar = async (aluno) => {
-    console.log('aluno', aluno)
+    this.clicouSalvar = true
     if (!aluno) return
     try {
 
@@ -33,18 +36,51 @@ export class AlunoEditPage implements OnInit {
         this.alertService.success('Aluno cadastrado com sucesso!')
       }
 
+      this.router.navigate(['/aluno'])
+      this.clicouSalvar = false;
+      this.getAlunos()
+
     } catch (error) {
       console.error('error', error)
-      this.alertService.error('Problemas ao criar aluno!')
+      this.alertService.error(`Problemas ao criar aluno! ${error.message}`)
     }
+
+  }
+
+  remover = async (aluno) => {
+    this.clicouRemover = true
+    if (!aluno) return
+
+    try {
+      if (aluno.id) {
+        await this.dataProvider.delete(`aluno/${aluno.id}`).toPromise()
+        this.alertService.success('Aluno removido com sucesso!')
+        this.router.navigate(['/aluno'])
+        this.clicouRemover = false;
+      }
+    } catch (error) {
+      this.alertService.error(`Erro ao remover aluno! ${error.message}`)
+    }
+
+    this.getAlunos()
   }
 
   getAluno = async () => {
-    const id = this.activatedRoute.snapshot.params.id
+    const { id } = this.activatedRoute.snapshot.params
+    if (!id) return
     try {
       this.aluno = await this.dataProvider.read(`aluno/${id}`).toPromise()
     } catch (error) {
       console.error('erro ao extrair o id da URL', error);
+    }
+  }
+
+  getAlunos = async () => {
+    try {
+      this.aluno = await this.dataProvider.read('aluno').toPromise()
+      this.dataProvider.data$.next(this.aluno)
+    } catch (error) {
+      console.error('erro ao tentar recuprar lista de alunos', error)
     }
   }
 

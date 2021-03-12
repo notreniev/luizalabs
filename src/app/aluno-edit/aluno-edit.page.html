@@ -125,11 +125,15 @@
       </form>
     </ion-list>
 
-    <ion-button expand="block" color="success" (click)="salvar(aluno)" [disabled]="cadastroForm.invalid || clicou">
-      <ion-spinner name="dots" *ngIf="clicou"></ion-spinner>
+    <ion-button expand="block" (click)="salvar(aluno)" [disabled]="cadastroForm.invalid">
+      <ion-spinner name="dots" *ngIf="clicouSalvar"></ion-spinner>
       <span *ngIf="!clicou">Salvar</span>
     </ion-button>
 
+    <ion-button expand="block" color="danger" (click)="remover(aluno)" *ngIf="aluno.id">
+      <ion-spinner name="dots" *ngIf="clicouRemover"></ion-spinner>
+      <span *ngIf="!clicou">Remover</span>
+    </ion-button>
 
   </div>
 
