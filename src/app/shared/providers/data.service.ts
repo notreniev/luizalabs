@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, take } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { Generico } from '../models/aluno/generico-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  public data$ = new BehaviorSubject<any[]>([]);
+  public data$ = new BehaviorSubject<Generico[]>([]);
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +22,6 @@ export class DataService {
    * @returns 
    */
   create(endpoint: string, body) {
-    console.log('body', body);
     return this.http.post<any>(`${environment.apiUrl}/${endpoint}`, body);
   }
 
@@ -51,7 +51,6 @@ export class DataService {
    * Deleção de item no backend
    * 
    * @param endpoint 
-   * @param id 
    * @returns 
    */
   delete(endpoint: string) {

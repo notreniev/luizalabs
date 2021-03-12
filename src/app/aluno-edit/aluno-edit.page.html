@@ -20,17 +20,14 @@
     <strong>Cadastro de alunos - Edição</strong>
 
     <!-- área de mensagens-->
-    <p style="width: 50%; margin-left: auto; margin-right: auto; text-align: center;">
-      <app-alert></app-alert>
-    </p>
+    <app-alert></app-alert>
 
     <ion-list>
       <form #cadastroForm="ngForm">
         <ion-item>
           <ion-label position="floating" for="nome">Nome</ion-label>
           <ion-input type="text" id="nome" name="nome" minlength="5" maxlength="150" [(ngModel)]="aluno.nome" required
-            #nome="ngModel">
-          </ion-input>
+            #nome="ngModel" autofocus="true"></ion-input>
 
           <!-- Validações nome -->
           <div *ngIf="nome.invalid && (nome.dirty || nome.touched)" class="alert alert-danger">
@@ -104,7 +101,7 @@
             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required #email="ngModel">
           </ion-input>
 
-          <!-- Validações celular -->
+          <!-- Validações e-mail -->
           <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
 
             <div *ngIf="email.errors.required">
@@ -125,14 +122,16 @@
       </form>
     </ion-list>
 
-    <ion-button expand="block" (click)="salvar(aluno)" [disabled]="cadastroForm.invalid">
-      <ion-spinner name="dots" *ngIf="clicouSalvar"></ion-spinner>
-      <span *ngIf="!clicou">Salvar</span>
+    <ion-button expand="block" (click)="salvarOuAtualizar(aluno)" [disabled]="cadastroForm.invalid">
+      <span>Salvar</span>
     </ion-button>
 
-    <ion-button expand="block" color="danger" (click)="remover(aluno)" *ngIf="aluno.id">
-      <ion-spinner name="dots" *ngIf="clicouRemover"></ion-spinner>
-      <span *ngIf="!clicou">Remover</span>
+    <ion-button expand="block" color="danger" (click)="confirmaRemover(aluno)" *ngIf="aluno.id">
+      <span>Remover</span>
+    </ion-button>
+
+    <ion-button expand="block" color="medium" routerLink="/aluno">
+      <span>Cancelar</span>
     </ion-button>
 
   </div>

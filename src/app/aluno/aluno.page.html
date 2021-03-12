@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/home" text="Voltar"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Desafio Luiza Labs - Aluno
+      Desafio Luiza Labs
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -17,19 +17,23 @@
   </ion-header>
 
   <div id="container">
-    <strong>Cadastro de alunos</strong>
-
-    <ion-item>
-      <ion-button expand="block" routerLink="/aluno-edit">
-        <span>Novo aluno</span>
-      </ion-button>
-    </ion-item>
-
     <!-- Searchbar  -->
-    <ion-searchbar showCancelButton="always"></ion-searchbar>
+    <!-- <ion-searchbar placeholder="Pesquisar"></ion-searchbar> -->
+    <ion-searchbar #search animated placeholder="Pesquisar" autocomplete="on" [(ngModel)]="filtro"></ion-searchbar>
+
+
+    <ion-list-header>
+      <ion-label><strong>Lista de alunos</strong></ion-label>
+    </ion-list-header>
 
     <ion-list>
-      <ion-item *ngFor="let aluno of alunos">
+      <ion-item lines="none">
+        <ion-button color="primary" routerLink="/aluno-edit" slot="end">
+          <span>Novo aluno</span>
+        </ion-button>
+      </ion-item>
+
+      <ion-item *ngFor="let aluno of alunos | search: filtro">
         <ion-label routerLink="/aluno-edit/{{aluno.id}}">
           <a routerLink="/aluno-edit/{{aluno.id}}">{{aluno.nome}}</a>
         </ion-label>

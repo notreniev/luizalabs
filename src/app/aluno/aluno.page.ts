@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Aluno } from '../shared/models/aluno/aluno-model';
+import { Generico } from '../shared/models/aluno/generico-model';
 import { DataService } from '../shared/providers/data.service';
 
 @Component({
@@ -8,14 +10,15 @@ import { DataService } from '../shared/providers/data.service';
 })
 export class AlunoPage implements OnInit {
 
-  alunos: any = [];
+  alunos: Array<Generico>;
+  filtro: string;
+
+  @ViewChild('search') search: string;
 
   constructor(private dataProvider: DataService) {
     this.dataProvider.data$.subscribe(() => {
       this.alunos = this.dataProvider.data$.value
     })
-
-    this.getAlunos()
   }
 
   getAlunos = async () => {
