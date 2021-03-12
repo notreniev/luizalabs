@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Desafio Luiza Labs</ion-title>
@@ -18,27 +18,42 @@
 
   <div id="container">
     <!-- Searchbar  -->
-    <!-- <ion-searchbar placeholder="Pesquisar"></ion-searchbar> -->
     <ion-searchbar #search animated placeholder="Pesquisar" autocomplete="on" [(ngModel)]="filtro"></ion-searchbar>
 
-
-    <ion-list-header>
-      <ion-label><strong>Lista de alunos</strong></ion-label>
-    </ion-list-header>
-
     <ion-list>
-      <ion-item lines="none">
-        <ion-button color="primary" routerLink="/aluno-edit" slot="end">
-          <span>Novo aluno</span>
-        </ion-button>
-      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label><strong>Lista de alunos</strong></ion-label>
+            </ion-col>
+            <ion-col class="right">
+              <ion-button color="primary" routerLink="/aluno-edit">
+                <span>Novo aluno</span>
+                <ion-icon name="person-add-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
 
-      <ion-item *ngFor="let aluno of alunos | search: filtro">
-        <ion-label routerLink="/aluno-edit/{{aluno.id}}">
-          <a routerLink="/aluno-edit/{{aluno.id}}">{{aluno.nome}}</a>
-        </ion-label>
+          <ion-row *ngFor="let aluno of alunos | search: filtro; let odd = odd"
+            [ngClass]="odd ? 'odd_col' : 'even_col'">
+            <ion-col size="4" size-sm size-md size-xs>
+              <a routerLink="/aluno-edit/{{aluno.id}}">{{aluno.nome}}</a>
+            </ion-col>
+
+            <ion-col size="4" size-sm size-md size-xs>
+              {{aluno.email}}
+            </ion-col>
+
+            <ion-col size="4" size-sm size-md size-xs>
+              {{aluno.celular}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-item>
     </ion-list>
+
+
 
   </div>
 </ion-content>

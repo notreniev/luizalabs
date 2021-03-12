@@ -19,3 +19,25 @@
 #container a {
   text-decoration: none;
 }
+
+ion-button {
+  span {
+    padding: 12px;
+    white-space: nowrap;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.odd_col {
+  background: none;
+}
+.even_col {
+  background: #ddd;
+}
