@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Aluno } from '../shared/models/aluno/aluno-model';
 import { Generico } from '../shared/models/aluno/generico-model';
 import { DataService } from '../shared/providers/data.service';
 
