@@ -60,26 +60,8 @@
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating" for="telefone">Telefone</ion-label>
-          <ion-input type="tel" id="telefone" name="telefone" minlength="12" maxlength="12" [(ngModel)]="aluno.telefone"
-            required #telefone="ngModel">
-          </ion-input>
-
-          <!-- Validações telefone -->
-          <div *ngIf="telefone.invalid && (telefone.dirty || telefone.touched)" class="alert alert-danger">
-            <div *ngIf="telefone.errors.required">
-              Telefone é obrigatório.
-            </div>
-            <div *ngIf="telefone.errors.minlength">
-              Telefone deve ter ao menos 11 caracteres.
-            </div>
-          </div>
-
-        </ion-item>
-
-        <ion-item>
           <ion-label position="floating" for="celular">Celular</ion-label>
-          <ion-input type="tel" id="celular" name="celular" minlength="11" maxlength="11" [(ngModel)]="aluno.celular"
+          <ion-input type="tel" id="celular" name="celular" minlength="12" maxlength="12" [(ngModel)]="aluno.celular"
             required #celular="ngModel">
           </ion-input>
 

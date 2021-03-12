@@ -31,13 +31,24 @@ ion-button {
   text-align: center;
 }
 
-.right {
+.end {
   text-align: right;
 }
 
-.odd_col {
+.odd {
   background: none;
+  border-top: solid 1px #999;
 }
-.even_col {
+
+.even {
   background: #ddd;
+}
+
+a {
+  font-weight: normal;
+  font-size: 100%;
+}
+
+a:hover {
+  color: rgb(4, 4, 167);
 }

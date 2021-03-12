@@ -45,8 +45,10 @@ export class AlunoEditPage implements OnInit {
         this.alertService.success('Aluno cadastrado com sucesso!')
       }
 
-      this.router.navigate(['/aluno'])
-      this.getAlunos()
+      setTimeout(() => {
+        this.router.navigate(['/aluno'])
+        this.getAlunos()
+      }, 1000)
 
     } catch (error) {
       console.error('error', error)

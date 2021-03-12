@@ -27,7 +27,7 @@
             <ion-col>
               <ion-label><strong>Lista de alunos</strong></ion-label>
             </ion-col>
-            <ion-col class="right">
+            <ion-col class="end">
               <ion-button color="primary" routerLink="/aluno-edit">
                 <span>Novo aluno</span>
                 <ion-icon name="person-add-outline"></ion-icon>
@@ -35,17 +35,16 @@
             </ion-col>
           </ion-row>
 
-          <ion-row *ngFor="let aluno of alunos | search: filtro; let odd = odd"
-            [ngClass]="odd ? 'odd_col' : 'even_col'">
-            <ion-col size-sm size-md size-xs>
+          <ion-row *ngFor="let aluno of alunos | search: filtro; let odd = odd" [ngClass]="odd ? 'odd' : 'even'">
+            <ion-col size-sm-6 size-md-6 size-xs-6>
               <a routerLink="/aluno-edit/{{aluno.id}}">{{aluno.nome}}</a>
             </ion-col>
 
-            <ion-col size-sm size-md size-xs>
+            <ion-col size-sm-3 size-md-3 size-xs-3>
               {{aluno.email}}
             </ion-col>
 
-            <ion-col size-sm size-md size-xs>
+            <ion-col size-sm-3 size-md-3 size-xs-3 class="center">
               {{aluno.celular}}
             </ion-col>
           </ion-row>
