@@ -17,6 +17,9 @@
   </ion-header>
 
   <div id="container">
+    <!-- área de mensagens-->
+    <app-alert></app-alert>
+
     <!-- Searchbar  -->
     <ion-searchbar #search animated placeholder="Pesquisar" autocomplete="on" [(ngModel)]="filtro"></ion-searchbar>
 
@@ -46,6 +49,10 @@
 
             <ion-col size-sm-3 size-md-3 size-xs-3 class="center">
               <span>{{aluno.celular | mask: '(000) 00000-0000'}}</span>
+            </ion-col>
+
+            <ion-col class="center" (click)="confirmaRemover(aluno)">
+              <ion-icon name="trash-outline" title="Remover"></ion-icon>
             </ion-col>
           </ion-row>
         </ion-grid>
