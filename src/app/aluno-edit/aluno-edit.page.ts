@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Aluno } from '../shared/models/aluno/aluno-model';
@@ -13,7 +13,7 @@ import { DataService } from '../shared/providers/data.service';
 })
 export class AlunoEditPage implements OnInit {
 
-  aluno: Generico = { "id": 0, "nome": '', "email": '', "celular": 0 };
+  aluno: Generico = { "id": undefined, "nome": '', cpf: undefined, "email": '', "celular": undefined };
 
   constructor(
     private alertService: AlertService,
