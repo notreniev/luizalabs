@@ -44,7 +44,7 @@
         <ion-item>
           <ion-label position="floating" for="cpf">CPF</ion-label>
           <ion-input type="tel" id="cpf" name="cpf" minlength="11" maxlength="14" [(ngModel)]="aluno.cpf" required
-            #cpf="ngModel">
+            #cpf="ngModel" mask="000.000.000-00">
           </ion-input>
 
           <!-- Validações CPF -->
@@ -61,8 +61,8 @@
 
         <ion-item>
           <ion-label position="floating" for="celular">Celular</ion-label>
-          <ion-input type="tel" id="celular" name="celular" minlength="12" maxlength="12" [(ngModel)]="aluno.celular"
-            required #celular="ngModel">
+          <ion-input type="tel" id="celular" name="celular" minlength="16" maxlength="16" [(ngModel)]="aluno.celular"
+            required #celular="ngModel" mask="(000) 00000-0000">
           </ion-input>
 
           <!-- Validações celular -->

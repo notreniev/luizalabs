@@ -45,7 +45,7 @@
             </ion-col>
 
             <ion-col size-sm-3 size-md-3 size-xs-3 class="center">
-              {{aluno.celular}}
+              <span>{{aluno.celular | mask: '(000) 00000-0000'}}</span>
             </ion-col>
           </ion-row>
         </ion-grid>
