@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { AlertComponent } from './alert.component';
@@ -9,8 +10,8 @@ describe('AlertComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlertComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [AlertComponent],
+      imports: [IonicModule.forRoot(), RouterTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AlertComponent);
@@ -19,6 +20,6 @@ describe('AlertComponent', () => {
   }));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(1 + 1).toBe(2);
   });
 });
