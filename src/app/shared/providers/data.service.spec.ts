@@ -15,7 +15,7 @@ describe('DataService', () => {
       http: 'http',
       create: 'create',
       read: 'read'
-    })
+    });
 
     TestBed.configureTestingModule({
       declarations: [DataService],

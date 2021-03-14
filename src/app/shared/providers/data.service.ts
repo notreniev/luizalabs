@@ -16,10 +16,6 @@ export class DataService {
 
   /**
    * Criação de item no backend
-   * 
-   * @param endpoint 
-   * @param body 
-   * @returns 
    */
   create(endpoint: string, body) {
     return this.http.post<any>(`${environment.apiUrl}/${endpoint}`, body);
@@ -27,9 +23,6 @@ export class DataService {
 
   /**
    * Leitura de itens no backend
-   * 
-   * @param endpoint 
-   * @returns 
    */
   read(endpoint: string) {
     return this.http.get<any>(`${environment.apiUrl}/${endpoint}`)
@@ -38,10 +31,6 @@ export class DataService {
 
   /**
    * Alteração de itens no backend
-   * 
-   * @param endpoint 
-   * @param body 
-   * @returns 
    */
   update(endpoint: string, body) {
     return this.http.patch<any>(`${environment.apiUrl}/${endpoint}`, body);
@@ -49,9 +38,6 @@ export class DataService {
 
   /**
    * Deleção de item no backend
-   * 
-   * @param endpoint 
-   * @returns 
    */
   delete(endpoint: string) {
     return this.http.delete<any>(`${environment.apiUrl}/${endpoint}`);

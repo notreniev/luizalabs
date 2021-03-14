@@ -8,14 +8,14 @@ export class SearchPipe implements PipeTransform {
   transform(lista: any[], search: string): any {
 
     if (!lista) {
-      return []
+      return [];
     }
 
     if (!search) {
-      return lista
+      return lista;
     }
 
-    return lista.filter(v => Object.keys(v).map(key => v[key]).join('$$').toLowerCase().indexOf(search.toLowerCase()) > -1)
+    return lista.filter(v => Object.keys(v).map(key => v[key]).join('$$').toLowerCase().indexOf(search.toLowerCase()) > -1);
   }
 
 

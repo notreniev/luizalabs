@@ -9,7 +9,7 @@ import { AlunoPageRoutingModule } from './aluno-routing.module';
 import { AlunoPage } from './aluno.page';
 import { AlertComponentModule } from '../shared/components/alert/alert.component.module';
 
-import { SearchPipeModule } from '../shared/pipes/search.pipe.module'
+import { SearchPipeModule } from '../shared/pipes/search.pipe.module';
 import { NgxMaskIonicModule } from 'ngx-mask-ionic';
 
 @NgModule({

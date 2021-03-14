@@ -11,7 +11,7 @@ describe('AlertService', () => {
     http: 'http',
     create: 'create',
     read: 'read'
-  })
+  });
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({

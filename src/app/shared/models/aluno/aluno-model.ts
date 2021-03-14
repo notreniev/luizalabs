@@ -1,4 +1,4 @@
-import { Generico } from "./generico-model";
+import { Generico } from './generico-model';
 
 export class Aluno extends Generico {
   cep?: number;
@@ -8,5 +8,5 @@ export class Aluno extends Generico {
   bairro?: string;
   cidade?: string;
   uf?: string;
-  status?: number
+  status?: number;
 }

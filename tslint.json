@@ -10,7 +10,7 @@
     "array-type": false,
     "arrow-return-shorthand": true,
     "curly": [true, "ignore-same-line"],
-    "object-shorthand": ["error", "never"],
+    "object-literal-shorthand": [true, {"property": "never"}],
     "deprecation": {
       "severity": "warning"
     },

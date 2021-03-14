@@ -23,16 +23,14 @@ export class AlunoPage implements OnInit {
     private alertController: AlertController
   ) {
     this.dataProvider.data$.subscribe(() => {
-      this.alunos = this.dataProvider.data$.value
-    })
+      this.alunos = this.dataProvider.data$.value;
+    });
   }
 
   /**
- * Exibe alerta de remoção e
- * remove caso afirmativo
- * 
- * @param aluno 
- */
+   * Exibe alerta de remoção e
+   * remove caso afirmativo
+   */
   confirmaRemover = async (aluno: any) => {
     const config = {
       header: 'Confirmação!',
@@ -47,60 +45,57 @@ export class AlunoPage implements OnInit {
         {
           text: 'Remover',
           handler: () => {
-            this.remover(aluno)
+            this.remover(aluno);
           }
         }
       ]
-    }
+    };
 
     await this.alertController
       .create(config)
       .then(res => res.present())
-      .catch(error => console.error(error))
+      .catch(error => console.error(error));
   }
 
   /**
    * Remove aluno
-   * 
-   * @param aluno 
    */
   remover = async (aluno) => {
-    if (!aluno) return
+    if (!aluno) return;
 
     try {
       if (aluno.id) {
-        await this.dataProvider.delete(`aluno/${aluno.id}`).toPromise()
-        this.alertService.success('Aluno removido com sucesso!')
+        await this.dataProvider.delete(`aluno/${aluno.id}`).toPromise();
+        this.alertService.success('Aluno removido com sucesso!');
 
         setTimeout(() => {
-          this.getAlunos()
-        }, 1000)
+          this.getAlunos();
+        }, 1000);
 
       }
     } catch (error) {
-      this.alertService.error(`Erro ao remover aluno! ${error.message}`)
+      this.alertService.error(`Erro ao remover aluno! ${error.message}`);
     }
   }
 
 
   remove = async (aluno: Aluno) => {
-    console.log(aluno)
-    await this.dataProvider.delete(`aluno/${aluno.id}`).toPromise()
-    this.getAlunos()
+    await this.dataProvider.delete(`aluno/${aluno.id}`).toPromise();
+    this.getAlunos();
   }
 
   getAlunos = async () => {
     try {
-      this.alunos = await this.dataProvider.read('aluno').toPromise()
-      this.dataProvider.data$.next(this.alunos)
+      this.alunos = await this.dataProvider.read('aluno').toPromise();
+      this.dataProvider.data$.next(this.alunos);
     } catch (error) {
-      console.error('erro ao tentar recuprar lista de alunos', error)
+      console.error('erro ao tentar recuprar lista de alunos', error);
     }
   }
 
 
   ngOnInit() {
-    this.getAlunos()
+    this.getAlunos();
   }
 
 }
