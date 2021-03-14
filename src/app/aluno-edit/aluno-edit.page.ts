@@ -13,7 +13,7 @@ import { DataService } from '../shared/providers/data.service';
 })
 export class AlunoEditPage implements OnInit {
 
-  aluno: Generico = { "id": undefined, "nome": '', cpf: undefined, "email": '', "celular": undefined };
+  aluno: Generico = { id: undefined, nome: '', cpf: undefined, email: '', celular: undefined };
 
   constructor(
     private alertService: AlertService,
@@ -25,34 +25,31 @@ export class AlunoEditPage implements OnInit {
   }
 
   /**
-   * Salva ou atualiza dados 
+   * Salva ou atualiza dados
    * do aluno
-   * 
-   * @param aluno 
-   * @returns 
    */
   salvarOuAtualizar = async (aluno: Aluno) => {
 
-    if (!aluno) return
+    if (!aluno) return;
 
     try {
 
       if (aluno.id) {
-        await this.dataProvider.update(`aluno/${aluno.id}`, { "aluno": aluno }).toPromise()
-        this.alertService.success('Aluno atualizado com sucesso!')
+        await this.dataProvider.update(`aluno/${aluno.id}`, { aluno: aluno }).toPromise();
+        this.alertService.success('Aluno atualizado com sucesso!');
       } else {
-        await this.dataProvider.create('aluno', { "aluno": aluno }).toPromise()
-        this.alertService.success('Aluno cadastrado com sucesso!')
+        await this.dataProvider.create('aluno', { aluno: aluno }).toPromise();
+        this.alertService.success('Aluno cadastrado com sucesso!');
       }
 
       setTimeout(() => {
-        this.router.navigate(['/aluno'])
-        this.getAlunos()
-      }, 1000)
+        this.router.navigate(['/aluno']);
+        this.getAlunos();
+      }, 1000);
 
     } catch (error) {
-      console.error('error', error)
-      this.alertService.error(`Problemas ao criar aluno! ${error.message}`)
+      console.error('error', error);
+      this.alertService.error(`Problemas ao criar aluno! ${error.message}`);
     }
   }
 
@@ -60,8 +57,6 @@ export class AlunoEditPage implements OnInit {
   /**
    * Exibe alerta de remoção e
    * remove caso afirmativo
-   * 
-   * @param aluno 
    */
   confirmaRemover = async (aluno: any) => {
     const config = {
@@ -77,40 +72,38 @@ export class AlunoEditPage implements OnInit {
         {
           text: 'Remover',
           handler: () => {
-            this.remover(aluno)
+            this.remover(aluno);
           }
         }
       ]
-    }
+    };
 
     await this.alertController
       .create(config)
       .then(res => res.present())
-      .catch(error => console.error(error))
+      .catch(error => console.error(error));
   }
 
 
 
   /**
    * Remove aluno
-   * 
-   * @param aluno 
    */
   remover = async (aluno) => {
-    if (!aluno) return
+    if (!aluno) return;
 
     try {
       if (aluno.id) {
-        await this.dataProvider.delete(`aluno/${aluno.id}`).toPromise()
-        this.alertService.success('Aluno removido com sucesso!')
+        await this.dataProvider.delete(`aluno/${aluno.id}`).toPromise();
+        this.alertService.success('Aluno removido com sucesso!');
 
         setTimeout(() => {
-          this.router.navigate(['/aluno'])
-        }, 1000)
+          this.router.navigate(['/aluno']);
+        }, 1000);
 
       }
     } catch (error) {
-      this.alertService.error(`Erro ao remover aluno! ${error.message}`)
+      this.alertService.error(`Erro ao remover aluno! ${error.message}`);
     }
   }
 
@@ -119,10 +112,10 @@ export class AlunoEditPage implements OnInit {
    * Recupera dados de um aluno
    */
   getAluno = async () => {
-    const { id } = this.activatedRoute.snapshot.params
-    if (!id) return
+    const { id } = this.activatedRoute.snapshot.params;
+    if (!id) return;
     try {
-      this.aluno = await this.dataProvider.read(`aluno/${id}`).toPromise()
+      this.aluno = await this.dataProvider.read(`aluno/${id}`).toPromise();
     } catch (error) {
       console.error('erro ao extrair o id da URL', error);
     }
@@ -134,10 +127,10 @@ export class AlunoEditPage implements OnInit {
    */
   getAlunos = async () => {
     try {
-      this.aluno = await this.dataProvider.read('aluno').toPromise()
-      this.dataProvider.data$.next(<any>this.aluno)
+      this.aluno = await this.dataProvider.read('aluno').toPromise();
+      this.dataProvider.data$.next(this.aluno as any);
     } catch (error) {
-      console.error('erro ao tentar recuprar lista de alunos', error)
+      console.error('erro ao tentar recuprar lista de alunos', error);
     }
   }
 
@@ -147,7 +140,7 @@ export class AlunoEditPage implements OnInit {
    * mudança na lista de alunos
    */
   ionViewWillLeave() {
-    this.getAlunos()
+    this.getAlunos();
   }
 
 
@@ -157,7 +150,7 @@ export class AlunoEditPage implements OnInit {
    * os dados caso haja um aluno.id
    */
   async ngOnInit() {
-    this.getAluno()
+    this.getAluno();
   }
 
 

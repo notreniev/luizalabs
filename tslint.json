@@ -9,7 +9,8 @@
     },
     "array-type": false,
     "arrow-return-shorthand": true,
-    "curly": true,
+    "curly": [true, "ignore-same-line"],
+    "object-shorthand": ["error", "never"],
     "deprecation": {
       "severity": "warning"
     },
@@ -94,6 +95,7 @@
         "named": "never"
       }
     },
+    "no-trailing-whitespace": false,
     "typedef-whitespace": {
       "options": [
         {

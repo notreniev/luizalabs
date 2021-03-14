@@ -8,7 +8,7 @@ import { AlunoEditPageRoutingModule } from './aluno-edit-routing.module';
 
 import { AlunoEditPage } from './aluno-edit.page';
 
-import { AlertComponentModule } from '../shared/components/alert/alert.component.module'
+import { AlertComponentModule } from '../shared/components/alert/alert.component.module';
 import { NgxMaskIonicModule } from 'ngx-mask-ionic';
 
 @NgModule({
