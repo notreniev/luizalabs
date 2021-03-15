@@ -2,10 +2,12 @@ import { browser, by, element } from 'protractor';
 
 export class AppPage {
   navigateTo() {
+    browser.waitForAngularEnabled(false);
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.deepCss('app-root ion-content')).getText();
+  async getParagraphText() {
+    browser.waitForAngularEnabled(true);
+    return await element(by.tagName('app-root ion-title')).getText();
   }
 }

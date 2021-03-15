@@ -7,8 +7,8 @@ describe('new App', () => {
     page = new AppPage();
   });
 
-  it('should be blank', () => {
+  it('should be Desafio Luiza Labs', async () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toContain('Start with Ionic UI Components');
+    expect(await page.getParagraphText()).toContain('Desafio Luiza Labs');
   });
 });
