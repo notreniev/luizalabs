@@ -11,7 +11,7 @@ describe('AlertComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AlertComponent],
-      imports: [IonicModule.forRoot(), RouterTestingModule]
+      imports: [IonicModule, RouterTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AlertComponent);

@@ -16,7 +16,7 @@ describe('AlertService', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AlertService],
-      imports: [AlertService, IonicModule.forRoot()],
+      imports: [AlertService, IonicModule],
       providers: [AlertService, {
         provide: AlertService, useValue: mockServiceSpy
       }]

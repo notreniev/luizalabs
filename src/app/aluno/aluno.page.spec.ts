@@ -17,7 +17,7 @@ describe('AlunoPage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AlunoPage, AlertComponent, SearchPipe],
-      imports: [IonicModule.forRoot(), HttpClientModule, RouterTestingModule, FormsModule],
+      imports: [IonicModule, HttpClientModule, RouterTestingModule, FormsModule],
       providers: [DataService]
     }).compileComponents();
 

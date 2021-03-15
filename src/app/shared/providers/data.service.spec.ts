@@ -19,7 +19,7 @@ describe('DataService', () => {
 
     TestBed.configureTestingModule({
       declarations: [DataService],
-      imports: [IonicModule.forRoot(), HttpClientModule, RouterTestingModule],
+      imports: [IonicModule, HttpClientModule, RouterTestingModule],
       providers: [DataService, {
         provide: DataService, useValue: mockServiceSpy
       }]
