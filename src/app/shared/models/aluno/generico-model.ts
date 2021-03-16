@@ -1,5 +1,5 @@
 export class Generico {
-    id: number;
+    id?: number;
     nome: string;
     cpf: number;
     email: string;

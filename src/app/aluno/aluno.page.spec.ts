@@ -26,7 +26,7 @@ describe('AlunoPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', async () => {
-    expect(component).toBeTruthy();
+  it('should create aluno component', async () => {
+    expect(component).toBeDefined();
   });
 });

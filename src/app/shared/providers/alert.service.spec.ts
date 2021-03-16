@@ -24,7 +24,7 @@ describe('AlertService', () => {
     }).compileComponents();
   }));
 
-  it('should be created', () => {
-    expect(AlertService).toBeTruthy();
+  it('should be created AlertService', () => {
+    expect(AlertService).toBeDefined()
   });
 });

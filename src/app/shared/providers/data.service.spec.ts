@@ -27,7 +27,7 @@ describe('DataService', () => {
 
   }));
 
-  it('should be created', () => {
-    expect(DataService).toBeTruthy();
+  it('should be created DataService', () => {
+    expect(DataService).toBeDefined();
   });
 });

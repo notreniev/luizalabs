@@ -20,7 +20,7 @@ describe('HomePage', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create HomePageComponent', () => {
     expect(component).toBeTruthy();
   });
 });

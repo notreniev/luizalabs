@@ -10,8 +10,10 @@ import { DataService } from '../shared/providers/data.service';
 import { AlunoEditPage } from './aluno-edit.page';
 
 describe('AlunoEditPage', () => {
+  let service: DataService;
   let component: AlunoEditPage;
   let fixture: ComponentFixture<AlunoEditPage>;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -23,26 +25,39 @@ describe('AlunoEditPage', () => {
     fixture = TestBed.createComponent(AlunoEditPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    service = TestBed.inject(DataService);
+    httpTestingController = TestBed.inject(HttpTestingController);
   }));
 
-  it('should create aluno', async () => {
-    const aluno: Aluno = {
-      id: 0,
+  afterEach(() => {
+    httpTestingController.verify();
+  });
+
+  it('should create alunoEditComponent', () => {
+    expect(component).toBeTruthy();
+  })
+
+  it('create should make a POST HTTP request with resource as body', () => {
+    const alunoObj = {
       nome: "João da Silva2",
       cpf: 1234567890,
       email: "joao@gmail.com",
       celular: '048090900301'
     }
 
-    expect(component.salvarOuAtualizar(aluno)).toBeTruthy();
+    const obj = JSON.stringify({ aluno: alunoObj });
+    service.create('aluno', obj).subscribe(res => {
+      expect(res).toBeTruthy();
+    });
 
-  });
-
-  it('should delete aluno', (done) => {
-    const aluno = { id: 69 }
-
-    expect(component.remover(aluno)).toBeTruthy();
-    done();
+    const req = httpTestingController.expectOne('http://localhost:3100/aluno', 'post to api')
+    expect(req.request.method).toBe('POST');
+    expect(req.request.body).toBeTruthy();
+    expect(req.cancelled).toBeFalsy();
+    expect(req.request.responseType).toEqual('json');
+    req.flush(alunoObj, { status: 200, statusText: 'Ok' });
+    httpTestingController.verify();
   });
 
 
