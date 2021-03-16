@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 import { Aluno } from '../shared/models/aluno/aluno-model';
 import { Generico } from '../shared/models/aluno/generico-model';
 import { AlertService } from '../shared/providers/alert.service';
@@ -44,13 +45,15 @@ export class AlunoEditPage implements OnInit {
 
       setTimeout(() => {
         this.router.navigate(['/aluno']);
-        this.getAlunos();
-      }, 1000);
+        // this.getAlunos();
+      }, 3000);
 
     } catch (error) {
       console.error('error', error);
-      this.alertService.error(`Problemas ao criar aluno! ${error.message}`);
+      this.alertService.error(error.message);
     }
+
+    return true;
   }
 
 
@@ -103,6 +106,7 @@ export class AlunoEditPage implements OnInit {
 
       }
     } catch (error) {
+      console.log('remover com erro', aluno.id)
       this.alertService.error(`Erro ao remover aluno! ${error.message}`);
     }
   }
@@ -130,7 +134,7 @@ export class AlunoEditPage implements OnInit {
       this.aluno = await this.dataProvider.read('aluno').toPromise();
       this.dataProvider.data$.next(this.aluno as any);
     } catch (error) {
-      console.error('erro ao tentar recuprar lista de alunos', error);
+      console.error('erro ao tentar recuperar lista de alunos', error);
     }
   }
 

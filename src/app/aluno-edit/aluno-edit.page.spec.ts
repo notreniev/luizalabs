@@ -1,5 +1,5 @@
-import { HttpClientModule } from '@angular/common/http';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { ComponentFixture, fakeAsync, inject, resetFakeAsyncZone, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
@@ -16,7 +16,7 @@ describe('AlunoEditPage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AlunoEditPage, AlertComponent],
-      imports: [IonicModule, RouterTestingModule, HttpClientModule, FormsModule],
+      imports: [IonicModule, RouterTestingModule, HttpClientTestingModule, FormsModule],
       providers: [DataService]
     }).compileComponents();
 
@@ -28,28 +28,22 @@ describe('AlunoEditPage', () => {
   it('should create aluno', async () => {
     const aluno: Aluno = {
       id: 0,
-      nome: "João da Silva",
-      cpf: 123456789,
+      nome: "João da Silva2",
+      cpf: 1234567890,
       email: "joao@gmail.com",
-      celular: 48090900301
+      celular: '048090900301'
     }
 
-    spyOn(component, 'salvarOuAtualizar').and.callFake(() => {
-      return component.salvarOuAtualizar(aluno);
-    });
-
-    component.ngOnInit();
-
-    expect([0]).toBeTruthy()
+    expect(component.salvarOuAtualizar(aluno)).toBeTruthy();
 
   });
 
-  it('should read aluno', async () => {
-    spyOn(component, 'getAluno').and.callFake(() => {
-      return component.getAluno();
-    });
+  it('should delete aluno', (done) => {
+    const aluno = { id: 69 }
 
-    expect([0]).toBeTruthy()
+    expect(component.remover(aluno)).toBeTruthy();
+    done();
   });
+
 
 });

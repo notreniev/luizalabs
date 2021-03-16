@@ -1,6 +1,11 @@
 .alert {
   position: relative;
   padding: 0.75rem;
+  box-shadow: 3px 3px 29px #00000033;
+  border: #000;
+  background-repeat: no-repeat;
+  background-size: 115%;
+  background-position: bottom 30%;
 }
 
 .alert-success {

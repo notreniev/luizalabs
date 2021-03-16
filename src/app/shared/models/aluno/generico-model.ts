@@ -3,5 +3,5 @@ export class Generico {
     nome: string;
     cpf: number;
     email: string;
-    celular: number;
+    celular: string;
 }
