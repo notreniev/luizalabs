@@ -91,7 +91,7 @@ export class AlunoEditPage implements OnInit {
   /**
    * Remove aluno
    */
-  remover = async (aluno) => {
+  private remover = async (aluno) => {
     if (!aluno) return;
 
     try {
@@ -105,7 +105,7 @@ export class AlunoEditPage implements OnInit {
 
       }
     } catch (error) {
-      console.log('remover com erro', aluno.id)
+      console.log('remover com erro', aluno.id);
       this.alertService.error(`Erro ao remover aluno! ${error.message}`);
     }
   }

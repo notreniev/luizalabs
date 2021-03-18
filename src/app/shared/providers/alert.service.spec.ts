@@ -25,6 +25,6 @@ describe('AlertService', () => {
   }));
 
   it('should be created AlertService', () => {
-    expect(AlertService).toBeDefined()
+    expect(AlertService).toBeDefined();
   });
 });
