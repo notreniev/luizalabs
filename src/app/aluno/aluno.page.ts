@@ -58,9 +58,9 @@ export class AlunoPage implements OnInit {
   }
 
   /**
-   * Remove aluno
+   * Remove 1 aluno pelo id
    */
-  remover = async (aluno) => {
+  private remover = async (aluno) => {
     if (!aluno) return;
 
     try {
@@ -78,15 +78,12 @@ export class AlunoPage implements OnInit {
     }
   }
 
-
-  remove = async (aluno: Aluno) => {
-    await this.dataProvider.delete(`aluno/${aluno.id}`).toPromise();
-    this.getAlunos();
-  }
-
+  /**
+   * Retorna a lista de alunos
+   */
   getAlunos = async () => {
     try {
-      this.alunos = await this.dataProvider.read('aluno').toPromise();
+      this.alunos = await this.dataProvider.read('alunos').toPromise();
       this.dataProvider.data$.next(this.alunos);
     } catch (error) {
       console.error('erro ao tentar recuprar lista de alunos', error);

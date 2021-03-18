@@ -45,12 +45,11 @@ export class AlunoEditPage implements OnInit {
 
       setTimeout(() => {
         this.router.navigate(['/aluno']);
-        // this.getAlunos();
-      }, 3000);
+      }, 1000);
 
     } catch (error) {
-      console.error('error', error);
-      this.alertService.error(error.message);
+      console.error('error', error.error);
+      this.alertService.error(error.error.message);
     }
 
     return true;
@@ -131,7 +130,7 @@ export class AlunoEditPage implements OnInit {
    */
   getAlunos = async () => {
     try {
-      this.aluno = await this.dataProvider.read('aluno').toPromise();
+      this.aluno = await this.dataProvider.read('alunos').toPromise();
       this.dataProvider.data$.next(this.aluno as any);
     } catch (error) {
       console.error('erro ao tentar recuperar lista de alunos', error);
