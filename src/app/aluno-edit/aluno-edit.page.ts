@@ -52,7 +52,7 @@ export class AlunoEditPage implements OnInit {
       this.alertService.error(error.error.message);
     }
 
-    return true;
+    return aluno;
   }
 
 

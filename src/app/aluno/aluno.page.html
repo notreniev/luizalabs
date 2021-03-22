@@ -38,7 +38,8 @@
             </ion-col>
           </ion-row>
 
-          <ion-row *ngFor="let aluno of alunos | search: filtro; let odd = odd" [ngClass]="odd ? 'odd' : 'even'">
+          <ion-row *ngFor="let aluno of alunos | search: filtro; let odd = odd" [ngClass]="odd ? 'odd' : 'even'"
+            class="row-hover">
             <ion-col size-sm-6 size-md-6 size-xs-6>
               <a routerLink="/aluno-edit/{{aluno.id}}">{{aluno.nome}}</a>
             </ion-col>
@@ -51,8 +52,10 @@
               <span>{{aluno.celular | mask: '(000) 00000-0000'}}</span>
             </ion-col>
 
-            <ion-col class="center" (click)="confirmaRemover(aluno)">
-              <ion-icon name="trash-outline" title="Remover"></ion-icon>
+            <ion-col class="center" (click)="confirmaRemover(aluno)" class="end">
+              <ion-button title="Remover {{aluno.nome}}">
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>

@@ -1,7 +1,7 @@
 export class Generico {
     id?: number;
     nome: string;
-    cpf: number;
+    cpf: string;
     email: string;
     celular: string;
 }
