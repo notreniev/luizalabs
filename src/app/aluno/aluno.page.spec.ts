@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { RouterTestingModule } from '@angular/router/testing';
@@ -26,7 +26,27 @@ describe('AlunoPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create aluno component', async () => {
+  it('should create aluno component', () => {
     expect(component).toBeDefined();
   });
+
+  it('should have a title <strong> with Lista de alunos', () => {
+    const element: HTMLElement = fixture.nativeElement;
+    const title = element.querySelector('ion-label strong')
+    expect(title.textContent).toContain('Lista de alunos');
+  })
+
+  it('should search an aluno`s name', fakeAsync(() => {
+    spyOn(component, 'getAlunos');
+    let element: HTMLElement = fixture.nativeElement;
+    fixture.detectChanges();
+    tick();
+    fixture.whenStable()
+      .then(() => {
+        let ionSearch = element.querySelector('ion-searchbar');
+        ionSearch.value = 'my name';
+        ionSearch.dispatchEvent(new Event('ion-searchbar'));
+        expect(ionSearch.value).toBe('my name');
+      })
+  }))
 });
