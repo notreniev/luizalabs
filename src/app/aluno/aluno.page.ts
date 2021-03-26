@@ -5,6 +5,7 @@ import { Generico } from '../shared/models/aluno/generico-model';
 import { AlertService } from '../shared/providers/alert.service';
 import { DataService } from '../shared/providers/data.service';
 
+
 @Component({
   selector: 'app-aluno',
   templateUrl: './aluno.page.html',
@@ -25,6 +26,7 @@ export class AlunoPage implements OnInit {
     this.dataProvider.data$.subscribe(() => {
       this.alunos = this.dataProvider.data$.value;
     });
+
   }
 
   /**
@@ -94,5 +96,4 @@ export class AlunoPage implements OnInit {
   ngOnInit() {
     this.getAlunos();
   }
-
 }
