@@ -69,11 +69,7 @@ export class AlunoPage implements OnInit {
       if (aluno.id) {
         await this.dataProvider.delete(`aluno/${aluno.id}`).toPromise();
         this.alertService.success('Aluno removido com sucesso!');
-
-        setTimeout(() => {
-          this.getAlunos();
-        }, 1000);
-
+        this.getAlunos();
       }
     } catch (error) {
       this.alertService.error(`Erro ao remover aluno! ${error.message}`);
@@ -88,7 +84,7 @@ export class AlunoPage implements OnInit {
       this.alunos = await this.dataProvider.read('alunos').toPromise();
       this.dataProvider.data$.next(this.alunos);
     } catch (error) {
-      console.error('erro ao tentar recuprar lista de alunos', error);
+      console.error('erro ao tentar recuperar lista de alunos', error);
     }
   }
 
